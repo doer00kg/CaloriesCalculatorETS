@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!empty($_SESSION['user_id'])) {
+    header('Location: profile.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,13 +41,33 @@
   </header>
   
   <div class="content-box">
+<!-- 1) Вкладки режиму -->
+    <div class="auth-tabs">
+      <button type="button" id="registerTab" class="tab">Реєстрація</button>
+      <button type="button" id="loginTab"    class="tab">Вхід</button>
+    </div>
 
-    <p>Artem, here can be your text.</p>
+    <!-- 2) Форма авторизації/реєстрації -->
+    <div class="auth-form">
+      <form id="authForm" action="php/register.php" method="POST">
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <!-- Пароль -->
+        <div class="form-group">
+          <label for="password">Пароль</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <!-- Кнопка, текст змінюється через JS -->
+        <button type="submit" id="submitBtn">Зареєструватися</button>
+      </form>
+    </div>
   </div>
 
-  
-  <script src="script.js"></script>
 
+<script src="script.js"></script>
 
 
 </body>

@@ -1,5 +1,4 @@
 
-
 //верхній header nav
 document.addEventListener('DOMContentLoaded', () => {
   const settingsBtn = document.getElementById('settingsBtn');
@@ -30,28 +29,54 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-const ctx = document.getElementById('myPieChart').getContext('2d');
 
-let myPieChart = new Chart(ctx, {
-  type: 'pie',
-  data: {
-    labels: ['Proteins', 'Fats', 'Carbohydrates'],
-    datasets: [{
-      data: [30, 20, 50],
-      backgroundColor: ['#ff4800', '#0073ff', '#ffee00'],
-      hoverOffset: 20
-    }]
-  },
-  options: {
-    responsive: false
+
+
+// Settings
+
+document.addEventListener('DOMContentLoaded', () => {
+  // елементи вкладок та форми
+  const registerTab = document.getElementById('registerTab');
+  const loginTab    = document.getElementById('loginTab');
+  const submitBtn   = document.getElementById('submitBtn');
+  const authForm    = document.getElementById('authForm');
+
+  let mode = 'register';  // поточний режим
+
+  // Перемикання на «Реєстрація»
+  registerTab.addEventListener('click', () => {
+    submitBtn.textContent = 'Зареєструватися';
+  });
+
+  // Перемикання на «Вхід»
+  loginTab.addEventListener('click', () => {
+    submitBtn.textContent = 'Ввійти';
+  });
+
+  
+
+  // Функція відображення помилки
+  function showError(fieldId, message) {
+    const input = document.getElementById(fieldId);
+    const error = document.createElement('div');
+    error.className = 'error';
+    error.textContent = message;
+    input.parentNode.appendChild(error);
+  }
+
+  // Видалити всі попередні повідомлення про помилки
+  function clearErrors() {
+    document.querySelectorAll('.error').forEach(el => el.remove());
   }
 });
 
-document.getElementById('updateChartBtn').addEventListener('click', () => {
-  const protein = parseFloat(document.getElementById('inputProtein').value) || 0;
-  const fat = parseFloat(document.getElementById('inputFat').value) || 0;
-  const carb = parseFloat(document.getElementById('inputCarb').value) || 0;
 
-  myPieChart.data.datasets[0].data = [protein, fat, carb];
-  myPieChart.update();
+// Settings КІНЕЦЬ
+
+document.getElementById("loginTab").addEventListener("click", function() {
+  document.getElementById("submitBtn").textContent = "Enter";
+});
+
+document.getElementById("registerTab").addEventListener("click", function() {
+  document.getElementById("submitBtn").textContent = "Registration";
 });
