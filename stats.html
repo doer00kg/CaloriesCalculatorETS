@@ -1,39 +1,131 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eager to Sport</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Stats</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-        
   <header class="main-header">
-    <div class="header-title">
-      <h1 class="site-title">Eager to Sport</h1>
-    </div>
-  
+    <div class="header-title"><h1 class="site-title">Eager to Sport</h1></div>
     <nav class="navbar sticky-navbar">
       <div class="nav-links">
         <a href="ets1.html" class="nav-link">Profile</a>
         <a href="food.html" class="nav-link">Food</a>
-        <a href="stats.html" class="nav-link">Stats</a>
+        <a href="stats.html" class="nav-link active-link">Stats</a>
+      </div>
+      <div class="settings-icon">
+        <a href="settings.php"><i class="fas fa-cog"></i></a>
       </div>
     </nav>
   </header>
-  
-  <div class="content-box">
 
-    <p>Artem, here can be your text.</p>
-  </div>
+  <main class="stats-container">
+    <!-- STEP 1 -->
+    <section class="step" id="step-1">
+      <div class="step-number">1</div>
+      <h2>Запиши свої дані</h2>
+      <div class="tabs gender-tabs">
+        <button class="tab active" data-gender="female">Жінка</button>
+        <button class="tab"       data-gender="male">Чоловік</button>
+      </div>
+      <div class="form-group">
+        <label>Рік народження</label>
+        <div class="slider-wrapper">
+          <input type="range" id="year-slider" min="1920" max="2025" value="1993">
+          <span id="year-value" class="slider-value">1993</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Зріст (см)</label>
+        <div class="slider-wrapper">
+          <input type="range" id="height-slider" min="100" max="220" value="170">
+          <span id="height-value" class="slider-value">170</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Вага (кг)</label>
+        <div class="slider-wrapper">
+          <input type="range" id="weight-slider" min="30" max="200" value="80">
+          <span id="weight-value" class="slider-value">80</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Рівень активності</label>
+        <select id="activity-select">
+          <option value="sedentary">Сидячий спосіб життя</option>
+          <option value="light" selected>Легкі навантаження</option>
+          <option value="moderate">Середні навантаження</option>
+          <option value="heavy">Великі навантаження</option>
+          <option value="extreme">Екстремальні навантаження</option>
+        </select>
+        <p id="activity-desc" class="activity-desc">
+          Легкі навантаження — 1–3 тренування/тиждень.
+        </p>
+      </div>
+      <div class="form-group">
+        <label>Наявність жирів в організмі</label>
+        <div class="slider-wrapper">
+          <input type="range" id="fat-slider" min="5" max="50" value="20">
+          <span id="fat-value" class="slider-value">20 %</span>
+        </div>
+      </div>
+    </section>
 
-  
-  <script src="script.js"></script>
+    <!-- STEP 2 -->
+    <section class="step" id="step-2">
+      <div class="step-number">2</div>
+      <h2>Твої результати</h2>
+      <div class="result-box">
+        <div class="result-header">
+          <span>Індекс маси тіла</span>
+          <button class="info-btn" data-target="bmi-info">Пояснення</button>
+        </div>
+        <div class="result-value"><span id="bmi-value">–</span></div>
+        <div class="bmi-scale">
+          <span class="bmi-dot"></span>
+          <span class="bmi-dot"></span>
+          <span class="bmi-dot"></span>
+          <span class="bmi-dot"></span>
+          <span class="bmi-dot"></span>
+          <span class="bmi-dot"></span>
+        </div>
+        <div class="bmi-status" id="bmi-status">–</div>
+        <div id="bmi-info" class="info-text">
+          BMI показує співвідношення ваги та квадрата росту. Норма — 18.5–24.9.
+        </div>
+      </div>
+    </section>
 
+    <!-- STEP 3 -->
+    <section class="step" id="step-3">
+      <div class="step-number">3</div>
+      <h2>Твоя ціль</h2>
+      <div class="tabs goal-tabs">
+        <button class="tab"       data-goal="lose">Схуднути</button>
+        <button class="tab"       data-goal="gain">Набір маси</button>
+        <button class="tab active" data-goal="maintain">Бути в формі</button>
+      </div>
+      <div class="form-group">
+        <label>Цільова вага</label>
+        <div class="slider-wrapper">
+          <input type="range" id="goal-slider" min="30" max="200" value="80">
+          <span id="goal-value" class="slider-value">80.0 кг</span>
+        </div>
+      </div>
+      <div class="calories-box">
+        <ul class="macros-list">
+          <li><span class="dot protein"></span> Білки: <span id="prots-grams">–</span> г <span id="prots-pct">–</span></li>
+          <li><span class="dot carbs"></span> Вуглеводи: <span id="carbs-grams">–</span> г <span id="carbs-pct">–</span></li>
+          <li><span class="dot fats"></span> Жири: <span id="fats-grams">–</span> г <span id="fats-pct">–</span></li>
+          <li><span class="dot fiber"></span> Волокна: <span id="fiber-grams">–</span> г <span id="fiber-pct">–</span></li>
+        </ul>
+      </div>
+    </section>
+  </main>
 
-
+  <script type="module" src="script.js"></script>
 </body>
 </html>
