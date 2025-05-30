@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 /* Заголовок просто зверху */
 .header-title {
   text-align: center;
@@ -14,16 +20,12 @@
 
 /* Sticky navbar */
 .sticky-navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background-color: #e0e0e0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 12px 24px;
-  border-bottom: 1px solid #ccc;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  gap: 2rem;              /* відстань між групою лінків та іконкою */
+  padding: 12px 0;        /* можна відкоригувати за бажанням */
+  background-color: #157c32;
 }
 
 .active-link {
@@ -37,17 +39,18 @@
 }
 
 .navbar {
+  justify-content: center;           /* для абсолютного позиціювання іконки */
   display: flex;
-  justify-content: center;
-  background-color: #157c32;
+  align-items: center;
+  background-color: #157c32;    /* зелений фон навігації */
   padding: 12px 0;
-  border-bottom: 1px solid #c1bfae;
 }
 
+/* 2) Центруємо самі лінки, задаючи автомаргін */
 .nav-links {
   display: flex;
-  gap: 100px;
-  
+  gap: 10rem;                    /* адаптивний відступ між лінками */
+  position: relative;
 }
 
 .nav-link {
@@ -63,7 +66,6 @@
 body {
    font-family: 'Merriweather', serif;
     text-align: center;
-
     margin: 0;
     padding: 20px;
   }
@@ -105,3 +107,311 @@ body {
   font-size: 14px;
 }
 /* input end */
+
+/* ШЕСТЕРНЯ */
+.settings-icon {
+  position: absolute;   
+  left: 100%;
+  top: 50%;
+  transform: translate(0, -50%);
+
+  margin-left: 10rem;       /* відступ від “Stats” */
+  padding: 0.4rem;         /* щоб було гарно на зеленому фоні */
+  background-color: #157c32;
+  border-radius: 0.25rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Стилі для іконки */
+.settings-icon a {
+  color: #c1bfae;               /* колір іконки, як у лінків */
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+.settings-icon a:hover {
+  color: #ffffff;
+}
+
+/* ШЕСТЕРНЯ КІНЕЦЬ */
+
+
+/* Settings */
+
+/* === Вкладки «Реєстрація» / «Вхід» === */
+/* === Вкладки «Реєстрація» / «Вхід» чорною фарбою === */
+.auth-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tab {
+  background: none;
+  border: none;
+  font-family: 'Merriweather', serif;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  color: #000000;                  /* текст чорною */
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-bottom-color 0.2s ease;
+}
+
+.tab:hover {
+  color: #444444;                  /* трохи світліша чорна при наведенні */
+}
+
+.tab.active {
+  color: #000000;                  /* активна вкладка — чорна */
+  border-bottom-color: #000000;    /* підкреслення чорне */
+}
+
+
+/* === Форма === */
+.auth-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+.form-group {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+} 
+.form-group input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* === Кнопка === */
+#submitBtn {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  background-color: #157c32;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+#submitBtn:hover {
+  background-color: #136b29;
+}
+
+/* === Повідомлення про помилку === */
+.error {
+  color: #ff4d4f;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+
+/* Settings КІНЕЦЬ */
+
+/* Artem Havryliuk "Stats" */
+
+/* Reset */
+*, *::before, *::after { box-sizing: border-box; margin:0; padding:0; }
+
+/* Body & Fonts */
+body {
+  font-family: 'Merriweather', serif;
+  background: #f5f5f5;
+  color: #333;
+  text-align: center;
+  padding: 20px;
+}
+a { text-decoration: none; color: inherit; }
+
+/* Header/Nav */
+.header-title { background:#157c32; padding:16px 0 8px; }
+.site-title  { color:#c1bfae; font-size:28px; margin:0; }
+.sticky-navbar {
+  background:#157c32;
+  display:flex; justify-content:center; align-items:center;
+  padding:12px 0; position:relative;
+}
+.nav-links { display:flex; gap:4rem; }
+.nav-link {
+  color:#c1bfae; font-weight:600; font-size:18px;
+  transition:color .2s;
+}
+.nav-link:hover { color:#fff; }
+.active-link { color:#fff; border-bottom:2px solid #fff; }
+.settings-icon {
+  position:absolute; right:2rem; top:50%;
+  transform:translateY(-50%);
+}
+.settings-icon a { color:#c1bfae; font-size:1.25rem; }
+.settings-icon a:hover { color:#fff; }
+
+/* Main container: three columns */
+.stats-container {
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  gap:20px;
+  max-width:1200px;
+  margin:20px auto;
+}
+
+/* Each panel */
+.step {
+  background:#fff;
+  border-radius:8px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  padding:20px;
+  position:relative;
+  text-align:left;
+}
+.step-number {
+  position:absolute; top:-12px; left:-12px;
+  background:#157c32; color:#fff;
+  width:28px; height:28px; line-height:28px;
+  border-radius:50%; font-weight:bold;
+}
+.step h2 { margin-bottom:16px; font-size:20px; }
+
+/* Tabs */
+.tabs { display:flex; margin-bottom:16px; }
+.tab {
+  flex:1; padding:8px 16px;
+  border:1px solid #ccc; background:#f0f0f0;
+  cursor:pointer; font-weight:600;
+  transition:background .2s,color .2s;
+  text-align:center;
+}
+.tab:not(:last-child){ border-right:none; }
+.tab.active { background:#157c32; color:#fff; border-color:#157c32; }
+
+/* Form groups & sliders */
+.form-group { margin-bottom:20px; }
+.form-group label { display:block; font-weight:600; margin-bottom:6px; }
+.slider-wrapper { position:relative; }
+.slider-wrapper input[type="range"] { width:100%; }
+.slider-value {
+  position:absolute; top:-28px; right:0;
+  background:#fff; padding:2px 6px;
+  border:1px solid #ccc; border-radius:4px;
+  font-size:14px;
+}
+
+/* Activity description */
+.activity-desc {
+  font-size:13px; color:#555; margin-top:4px; text-align:left;
+}
+
+/* Switch */
+.switch { display:inline-block; margin-left:10px; vertical-align:middle; }
+.switch input { display:none; }
+.slider-round {
+  position:relative; width:40px; height:20px;
+  background:#ccc; border-radius:20px;
+  cursor:pointer;
+}
+.slider-round::after {
+  content:""; position:absolute;
+  width:18px; height:18px; background:#fff;
+  border-radius:50%; top:1px; left:1px;
+  transition:transform .2s;
+}
+.switch input:checked + .slider-round { background:#157c32; }
+.switch input:checked + .slider-round::after {
+  transform:translateX(20px);
+}
+.note { font-size:13px; color:#777; margin-top:4px; }
+
+/* Result boxes */
+.result-box {
+  background:#f9f9f9; border:1px solid #ddd;
+  border-radius:8px; padding:16px; margin-bottom:20px;
+}
+.result-header {
+  display:flex; justify-content:space-between;
+  align-items:center; margin-bottom:8px;
+}
+.result-value { font-size:32px; font-weight:bold; color:#157c32; }
+.result-subvalue { color:#777; margin-bottom:8px; }
+.info-btn {
+  background:none; border:none; color:#157c32;
+  cursor:pointer; font-size:14px;
+}
+.info-text {
+  display:none; font-size:13px; color:#555; margin-top:8px;
+}
+.info-text.visible { display:block; }
+
+/* BMI scale */
+.bmi-scale {
+  display:flex; justify-content:space-between;
+  margin:10px 0;
+}
+.bmi-dot {
+  width:12px; height:12px;
+  background:#ddd; border-radius:50%;
+}
+.bmi-dot.active { background:#f7a600; }
+.bmi-status { font-weight:600; text-align:center; }
+
+/* Calories & Macros */
+.calories-box { margin-top:16px; }
+.calories-box h3 { font-size:18px; margin-bottom:8px; }
+.calories-value {
+  font-size:36px; color:#157c32; font-weight:bold;
+}
+.calories-subvalue { color:#777; margin-bottom:16px; }
+.macros-list {
+  list-style:none; padding-left:0; margin-top:16px;
+}
+.macros-list li {
+  display:flex; align-items:center; gap:6px; margin-bottom:6px;
+  font-size:14px;
+}
+.dot {
+  width:10px; height:10px; border-radius:50%; display:inline-block;
+}
+.protein { background:#D01818; }
+.carbs   { background:#2E5AAA; }
+.fats    { background:#F7A600; }
+.fiber   { background:#5FAE1E; }
+
+/* Chart */
+#macros-chart {
+  display:block; margin:0 auto; max-width:200px;
+}
+
+.step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* решта твоїх властивостей */
+}
+
+/* Приховуємо порожній контейнер BMR (хай і не лишився в HTML) */
+.step-2 .result-box:first-child {
+  display: none;
+}
+
+/* Приховуємо будь-які залишки ккал/кДж */
+.calories-box .calories-value,
+.calories-box .calories-subvalue {
+  display: none;
+}
+
+/* Центруємо число у кружечку кроку */
+.step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
