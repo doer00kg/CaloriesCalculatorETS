@@ -1,6 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
+
+  <meta charset="utf-8" />
+  <title>Їжа | Eager to Sport</title>
+  <link href="style.css" rel="stylesheet" />
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eager to Sport</title>
@@ -8,18 +13,24 @@
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 
 </head>
 <body>
-        
   <header class="main-header">
     <div class="header-title">
       <h1 class="site-title">Eager to Sport</h1>
     </div>
-  
     <nav class="navbar sticky-navbar">
       <div class="nav-links">
+<<<<<<  Riabets
+        <a class="nav-link" href="ets1.php">Profile</a>
+        <a class="nav-link" href="food.html">Food</a>
+        <a class="nav-link" href="stats.html">Stats</a>
+        <div class="settings-icon">
+          <a href="settings.php"><i class="fas fa-cog"></i></a>
+        </div>
+
         <a href="ets1.html" class="nav-link">Profile</a>
         <a href="food.html"   class="nav-link">Food</a>
         <a href="stats.html"  class="nav-link">Stats</a>
@@ -28,19 +39,994 @@
           <a href="settings.php">
           <i class="fas fa-cog"></i>
         </a>
+
       </div>
     </div>
   </header>
-  
-  <div class="content-box">
 
-    <p>Artem, here can be your text.</p>
+ <div class="content-box">
+    <div class="food-tabs">
+      <button class="active-tab" id="tab-recipes" onclick="showMainTab('recipes')">Рецепти</button>
+      <button id="tab-products" onclick="showMainTab('products')">Продукти</button>
+    </div>
+
+    <!-- РЕЦЕПТИ -->
+<div class="food-section" id="recipes">
+  <div class="category-buttons">
+        <button onclick="filterCategory('soups')">Супи</button>
+        <button onclick="filterCategory('rice')">Рис і локшина</button>
+        <button onclick="filterCategory('meats')">М'ясні страви</button>
+        <button onclick="filterCategory('fish')">Риба та морепродукти</button>
+        <button onclick="filterCategory('desserts')">Десерти та напої</button>
+  </div>
+    <!-- супи -->  
+    <div class="recipe-grid">
+      <div class="recipe-card" data-category="soups">
+      <img src="images/ovochevyy_soup.jpg" alt="Овочевий суп">
+      <h3>Овочевий суп</h3>
+      <p>120 ккал. Смачний суп із сезонних овочів.</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+  <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> картопля, морква, цибуля, зелень</p>
+    <p><strong>Білки:</strong> 3 г | <strong>Жири:</strong> 2 г | <strong>Вуглеводи:</strong> 15 г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="soups">
+      <img src="images/grybniy_soup.jpg" alt="Грибний крем-суп">
+      <h3>Грибний крем-суп</h3>
+      <p>110 ккал. Ароматний суп із білих грибів і вершків.</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> печериці, картопля, вершки</p>
+    <p><strong>Білки:</strong> 3 г | <strong>Жири:</strong> 7 г | <strong>Вуглеводи:</strong> 8 г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="soups">
+      <img src="images/garbuzovy_soup.jpg" alt="Гарбузовий крем-суп">
+      <h3>Гарбузовий крем-суп</h3>
+      <p>105 ккал. Кремовий суп з вершками і гарбузом</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> гарбуз, вершки, цибуля, сіль, мускатний горіх</p>
+    <p><strong>Білки:</strong> 2 г | <strong>Жири:</strong> 5 г | <strong>Вуглеводи:</strong> 12 г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="soups">
+      <img src="images/kuryachy_soup.jpg" alt="Курячий бульйон">
+      <h3>Курячий бульйон</h3>
+      <p>85 ккал. Легкий бульйон з куркою та зеленню</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> курка, морква, цибуля, селера, зелень</p>
+    <p><strong>Білки:</strong> 7 г | <strong>Жири:</strong> 3 г | <strong>Вуглеводи:</strong> 2 г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="soups">
+      <img src="images/tomat_soup.jpg" alt="Томатний суп">
+      <h3>Томатний суп</h3>
+      <p>95 ккал. Кисло-солодкий суп із свіжих томатів</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> помідори, базилік, часник, цибуля.</p>
+    <p><strong>Білки:</strong> 2 г | <strong>Жири:</strong> 3 г | <strong>Вуглеводи:</strong> 14 г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="soups">
+      <img src="images/kapusta_soup.jpg" alt="Суп-пюре з цвітної капусти">
+      <h3>Суп-пюре з цвітної капусти</h3>
+      <p>98 ккал. Легка страва з м’яким смаком.</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong>  цвітна капуста, молоко, часник, сіль.</p>
+    <p><strong>Білки:</strong> 3 г | <strong>Жири:</strong> 5 г | <strong>Вуглеводи:</strong> 10 г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="soups">
+      <img src="images/gaspacho_soup.jpg" alt=" Гаспачо">
+      <h3> Гаспачо</h3>
+      <p>70 ккал. Холодний іспанський суп зі свіжих овочів.</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong>  помідори, огірок, перець, оливкова олія.</p>
+    <p><strong>Білки:</strong> 2 г | <strong>Жири:</strong> 3 г | <strong>Вуглеводи:</strong> 9 г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="soups">
+      <img src="images/kvasolya_soup.jpg" alt=" Суп з квасолею ">
+      <h3>Суп з квасолею</h3>
+      <p>145 ккал. Поживний суп з білою квасолею.</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> біла квасоля, морква, сіль, цибуля.</p>
+    <p><strong>Білки:</strong> 8 г | <strong>Жири:</strong> 4 г | <strong>Вуглеводи:</strong> 18 г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="soups">
+      <img src="images/syr_gryb_soup.jpg" alt=" Сирний суп з грибами ">
+      <h3>Сирний суп з грибами</h3>
+      <p>160 ккал.  Насичений смаком суп з плавленим сиром.</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> печериці, сир плавлений, картопля, вершки.</p>
+    <p><strong>Білки:</strong> 6 г | <strong>Жири:</strong> 10 г | <strong>Вуглеводи:</strong> 18 г</p>
+  </div>
+</div>
+
+    <!-- рис і локшина --> 
+
+    <div class="recipe-card" data-category="rice">
+      <img src="images/rice_ovoch.jpg" alt="Рис з овочами">
+      <h3>Рис з овочами</h3>
+      <p>130 ккал. Смажений рис з морквою та горошком</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> рис, морква, зелений горошок, кукурудза, соєвий соус</p>
+    <p><strong>Білки:</strong> 5 г | <strong>Жири:</strong> 3 г | <strong>Вуглеводи:</strong> 35 г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="rice">
+      <img src="images/lokshyn_tofu.jpg" alt="Локшина з тофу">
+      <h3>Локшина з тофу</h3>
+      <p>180 ккал. Локшина з овочами та соєвим соусом</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> локшина, тофу, броколі, морква, соєвий соус</p>
+    <p><strong>Білки:</strong> 10 г | <strong>Жири:</strong> 6 г | <strong>Вуглеводи:</strong> 30г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="rice">
+      <img src="images/plovkyrka_tofu.jpg" alt="Плов з куркою">
+      <h3>Плов з куркою</h3>
+      <p>210 ккал. Ароматний плов з курячим м’ясом</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> Рис, куряче філе, морква, цибуля, спеції</p>
+    <p><strong>Білки:</strong> 12 г | <strong>Жири:</strong> 8 г | <strong>Вуглеводи:</strong> 24г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="rice">
+      <img src="images/funzhoza.jpg" alt="Фунчоза з овочами">
+      <h3>Фунчоза з овочами</h3>
+      <p>140 ккал.Легка азіатська страва з рисової локшини</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> Фунчоза, перець, огірок, морква, кунжут</p>
+    <p><strong>Білки:</strong> 3 г | <strong>Жири:</strong> 2 г | <strong>Вуглеводи:</strong> 28г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="rice">
+      <img src="images/ricekryvetka.jpg" alt="Рис з креветками">
+      <h3>Рис з креветками</h3>
+      <p>190 ккал. Морський рис з ароматними спеціями</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> Рис, креветки, часник, соєвий соус, зелень</p>
+    <p><strong>Білки:</strong> 11 г | <strong>Жири:</strong> 4 г | <strong>Вуглеводи:</strong> 27г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="rice">
+      <img src="images/riceyayze.jpg" alt="Смажений рис з яйцем">
+      <h3>Смажений рис з яйцем</h3>
+      <p>160 ккал.  Класичний азіатський рис</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong>Варений рис, яйце, зелений лук, соєвий соус</p>
+    <p><strong>Білки:</strong>6 г | <strong>Жири:</strong> 5 г | <strong>Вуглеводи:</strong> 22г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="rice">
+      <img src="images/soba.jpg" alt="Соба з грибами">
+      <h3>Соба з грибами</h3>
+      <p>160 ккал. Гречана локшина соба з печерицями в соєво-кунжутному соусі.</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> локшина соба, печериці, соєвий соус, кунжут, цибуля.</p>
+    <p><strong>Білки:</strong>6 г | <strong>Жири:</strong> 4 г | <strong>Вуглеводи:</strong> 23г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="rice">
+      <img src="images/kyslosolodka.jpg" alt="Кисло-солодка локшина">
+      <h3>Кисло-солодка локшина</h3>
+      <p> 185 ккал.Локшина у пікантному кисло-солодкому соусі з овочами.</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong>  локшина, перець, ананас, морква, соус чилі, томатна паста.</p>
+    <p><strong>Білки:</strong>5 г | <strong>Жири:</strong> 6 г | <strong>Вуглеводи:</strong> 28г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="rice">
+      <img src="images/lokshynatai.jpg" alt="Локшина з куркою по-тайськи">
+      <h3>Локшина з куркою по-тайськи</h3>
+      <p> 250 ккал. Пряна локшина з соусом та арахісом</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong>   Рисова локшина, курка, соус пад тай, арахіс, лайм</p>
+    <p><strong>Білки:</strong> 13 г | <strong>Жири:</strong> 10 г | <strong>Вуглеводи:</strong> 28г</p>
+  </div>
+</div>
+
+    <!-- м'ясні страви --> 
+
+    <div class="recipe-card" data-category="meats">
+      <img src="images/kyrka_grill.jpg" alt="Курка гриль">
+      <h3>Курка гриль</h3>
+      <p>200 ккал. Запечена курка з прянощами</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong>  курка, спеції, оливкова олія</p>
+    <p><strong>Білки:</strong> 25 г | <strong>Жири:</strong> 10 г | <strong>Вуглеводи:</strong> 0г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="meats">
+      <img src="images/teftely_indychka.jpg" alt="Тефтелі з індички">
+      <h3>Тефтелі з індички</h3>
+      <p>150 ккал. Індичка в томатному соусі</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong>  курка, спеції, оливкова оліяіндичка, яйце, панірувальні сухарі, томатний соус</p>
+    <p><strong>Білки:</strong> 20 г | <strong>Жири:</strong> 8 г | <strong>Вуглеводи:</strong> 5 г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="meats">
+      <img src="images/staykyalovych.jpg" alt="Стейк із яловичини">
+      <h3>Стейк із яловичини</h3>
+      <p>250 ккал. Соковитий стейк середньої прожарки.</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong>  яловичина, оливкова олія, розмарин, сіль, перець.</p>
+    <p><strong>Білки:</strong> 26 г | <strong>Жири:</strong> 16 г | <strong>Вуглеводи:</strong> 0 г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="meats">
+      <img src="images/kiyvkotlet.jpg" alt="Котлета по-київськи">
+      <h3>Котлета по-київськи</h3>
+      <p>290 ккал. Соковита куряча котлета з маслом усередині.</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> куряче філе, вершкове масло, панірувальні сухарі, яйце, борошно. </p>
+    <p><strong>Білки:</strong> 22 г | <strong>Жири:</strong> 18  г | <strong>Вуглеводи:</strong> 10 г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="meats">
+      <img src="images/pechenya.jpg" alt="Печеня зі свинини">
+      <h3>Печеня зі свинини</h3>
+      <p>320 ккал. Ароматна мʼясна печеня з овочами.</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> свинина, картопля, морква, цибуля, спеції.</p>
+    <p><strong>Білки:</strong> 22 г | <strong>Жири:</strong> 20  г | <strong>Вуглеводи:</strong> 12 г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="meats">
+      <img src="images/gulyash.jpg" alt="Гуляш із телятини">
+      <h3>Гуляш із телятини</h3>
+      <p>230 ккал. Насичений угорський гуляш із м’якою телятиною.</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> телятина, цибуля, паприка, томати, спеції. </p>
+    <p><strong>Білки:</strong> 24 г | <strong>Жири:</strong> 12 г | <strong>Вуглеводи:</strong> 6 г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="meats">
+      <img src="images/kyrachistegna.jpg" alt="Курячі стегенця в духовці">
+      <h3>Курячі стегенця в духовці</h3>
+      <p>260 ккал. Запечені в маринаді з трав.</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> курячі стегенця, гірчиця, мед, соєвий соус, часник. </p>
+    <p><strong>Білки:</strong> 23 г | <strong>Жири:</strong> 17 г | <strong>Вуглеводи:</strong> 5 г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="meats">
+      <img src="images/pofranzu.jpg" alt="Мʼясо по-французьки">
+      <h3>Мʼясо по-французьки</h3>
+      <p>330 ккал. Запечена свинина з сиром та овочами.</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> свинина, цибуля, помідори, сир, майонез. </p>
+    <p><strong>Білки:</strong> 21 г | <strong>Жири:</strong> 25 г | <strong>Вуглеводи:</strong> 7 г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="meats">
+      <img src="images/bbq.jpg" alt="Свинячі реберця BBQ">
+      <h3>Свинячі реберця BBQ</h3>
+      <p>350 ккал.  Пікантні ребра в соусі барбекю..</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> свинячі ребра, соус BBQ, спеції. </p>
+    <p><strong>Білки:</strong> 22 г | <strong>Жири:</strong> 28 г | <strong>Вуглеводи:</strong> 7 г</p>
+  </div>
+</div>
+
+    <!-- риба і морепродукти --> 
+
+   <div class="recipe-card" data-category="fish">
+      <img src="images/sapechenyi_losos.jpg" alt="Запечений лосось">
+      <h3>Запечений лосось</h3>
+      <p>220 ккал. Лосось із лимоном та зеленню</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong>  лосось, лимон, зелень, оливкова олія</p>
+    <p><strong>Білки:</strong> 23 г | <strong>Жири:</strong> 15 г | <strong>Вуглеводи:</strong> 0 г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="fish">
+      <img src="images/tunets_grill.jpg" alt="Тунець на грилі">
+      <h3>Тунець на грилі</h3>
+      <p>180 ккал. Філе тунця на грилі</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> філе тунця, спеції, лимон</p>
+    <p><strong>Білки:</strong> 23 г | <strong>Жири:</strong> 15 г | <strong>Вуглеводи:</strong> 0 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="fish">
+  <img src="images/riba_kary.jpg" alt="Риба в карі соусі">
+  <h3>Риба в карі соусі</h3>
+  <p>210 ккал. Пікантна риба в кокосовому соусі карі</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+
+  <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> біла риба, кокосове молоко, паста карі, цибуля</p>
+    <p><strong>Білки:</strong> 22 г | <strong>Жири:</strong> 13 г | <strong>Вуглеводи:</strong> 5 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="fish">
+  <img src="images/kraby_salat.jpg" alt="Крабовий салат">
+  <h3>Крабовий салат</h3>
+  <p>150 ккал. Легкий салат з крабовими паличками</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+
+  <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> крабові палички, кукурудза, рис, яйце, майонез</p>
+    <p><strong>Білки:</strong> 12 г | <strong>Жири:</strong> 7 г | <strong>Вуглеводи:</strong> 12 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="fish">
+  <img src="images/krevetky_chasnyk.jpg" alt="Креветки з часником">
+  <h3>Креветки з часником</h3>
+  <p>170 ккал. Смажені креветки з часником та зеленню</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+
+  <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> креветки, часник, петрушка, оливкова олія</p>
+    <p><strong>Білки:</strong> 20 г | <strong>Жири:</strong> 10 г | <strong>Вуглеводи:</strong> 1 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="fish">
+  <img src="images/kalmary_gril.jpg" alt="Кальмари на грилі">
+  <h3>Кальмари на грилі</h3>
+  <p>160 ккал. Соковиті кальмари зі спеціями</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+
+  <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> кальмари, лимон, часник, зелень</p>
+    <p><strong>Білки:</strong> 21 г | <strong>Жири:</strong> 6 г | <strong>Вуглеводи:</strong> 2 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="fish">
+  <img src="images/rybni_tefteli.jpg" alt="Рибні тефтелі">
+  <h3>Рибні тефтелі</h3>
+  <p>190 ккал. Тефтелі з білої риби в соусі</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+
+  <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> філе риби, яйце, цибуля, томатний соус</p>
+    <p><strong>Білки:</strong> 18 г | <strong>Жири:</strong> 9 г | <strong>Вуглеводи:</strong> 7 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="fish">
+  <img src="images/kokteil_morsk.jpg" alt="Морський коктейль">
+  <h3>Морський коктейль</h3>
+  <p>200 ккал. Мікс морепродуктів у вершковому соусі</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+
+  <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> мідії, кальмари, креветки, вершки</p>
+    <p><strong>Білки:</strong> 22 г | <strong>Жири:</strong> 12 г | <strong>Вуглеводи:</strong> 3 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="fish">
+  <img src="images/rolly_losos.jpg" alt="Суші з лососем">
+  <h3>Суші з лососем</h3>
+  <p>210 ккал. Класичні роли з рисом та сирим лососем</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+
+  <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> рис, лосось, норі, рисовий оцет</p>
+    <p><strong>Білки:</strong> 18 г | <strong>Жири:</strong> 8 г | <strong>Вуглеводи:</strong> 20 г</p>
+  </div>
+</div>
+
+    <!-- десерти і напої --> 
+
+    <div class="recipe-card" data-category="desserts">
+      <img src="images/fruktoviy_salat.jpg" alt="Фруктовий салат">
+      <h3>Фруктовий салат</h3>
+      <p>90 ккал. Салат з яблуками, бананом і ківі</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> яблуко, банан, ківі, йогурт</p>
+    <p><strong>Білки:</strong> 2 г | <strong>Жири:</strong> 1 г | <strong>Вуглеводи:</strong> 22 г</p>
+  </div>
+</div>
+
+    <div class="recipe-card" data-category="desserts">
+      <img src="images/yogurt_muss.jpg" alt="Йогуртовий мус">
+      <h3>Йогуртовий мус</h3>
+      <p>110 ккал. Легкий десерт із йогурту та ягід</p>
+      <button onclick="toggleDetails(this)">Детальніше</button>
+
+   <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> йогурт, полуниця, малина, мед, желатин</p>
+    <p><strong>Білки:</strong> 4 г | <strong>Жири:</strong> 3 г | <strong>Вуглеводи:</strong> 15 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="desserts">
+  <img src="images/shokoladnyi_puding.jpg" alt="Шоколадний пудинг">
+  <h3>Шоколадний пудинг</h3>
+  <p>180 ккал. Кремовий пудинг з чорного шоколаду</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> темний шоколад, молоко, крохмаль, цукор</p>
+    <p><strong>Білки:</strong> 4 г | <strong>Жири:</strong> 9 г | <strong>Вуглеводи:</strong> 20 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="desserts">
+  <img src="images/syrnyky.jpg" alt="Сирники">
+  <h3>Сирники</h3>
+  <p>230 ккал. Традиційна страва з сиру</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> сир, яйце, борошно, ваніль</p>
+    <p><strong>Білки:</strong> 10 г | <strong>Жири:</strong> 10 г | <strong>Вуглеводи:</strong> 20 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="desserts">
+  <img src="images/zapikanka.jpg" alt="Сирна запіканка">
+  <h3>Сирна запіканка</h3>
+  <p>200 ккал. Десерт з сиру та манки</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> сир, яйця, манка, родзинки</p>
+    <p><strong>Білки:</strong> 12 г | <strong>Жири:</strong> 8 г | <strong>Вуглеводи:</strong> 18 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="desserts">
+  <img src="images/zelenyy_smuzi.jpg" alt="Зелений смузі">
+  <h3>Зелений смузі</h3>
+  <p>95 ккал. Напій з шпинатом, яблуком і бананом</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> шпинат, яблуко, банан, вода</p>
+    <p><strong>Білки:</strong> 2 г | <strong>Жири:</strong> 0.5 г | <strong>Вуглеводи:</strong> 22 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="desserts">
+  <img src="images/sik_z_apelsyna.jpg" alt="Апельсиновий сік">
+  <h3>Апельсиновий сік</h3>
+  <p>45 ккал. Свіжовичавлений сік</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> апельсини</p>
+    <p><strong>Білки:</strong> 1 г | <strong>Жири:</strong> 0 г | <strong>Вуглеводи:</strong> 10 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="desserts">
+  <img src="images/molochnyi_kokteil.jpg" alt="Молочний коктейль">
+  <h3>Молочний коктейль</h3>
+  <p>150 ккал. Напій з молока та банану</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> молоко, банан, мед</p>
+    <p><strong>Білки:</strong> 6 г | <strong>Жири:</strong> 4 г | <strong>Вуглеводи:</strong> 24 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="desserts">
+  <img src="images/kava.jpg" alt="Кава з молоком">
+  <h3>Кава з молоком</h3>
+  <p>60 ккал. Класичне поєднання</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Інгредієнти:</strong> кава, молоко, цукор</p>
+    <p><strong>Білки:</strong> 2 г | <strong>Жири:</strong> 2 г | <strong>Вуглеводи:</strong> 8 г</p>
+  </div>
+</div>
+
+
+  </div>
+</div>
+
+
+    <!-- ПРОДУКТИ -->
+    <div id="products" class="food-section" style="display: none;">
+      <div class="category-buttons">
+        <button onclick="filterProduct('meat')">Мʼясо</button>
+        <button onclick="filterProduct('veggies')">Овочі і фрукти</button>
+        <button onclick="filterProduct('fish')">Риба і морепродукти</button>
+        <button onclick="filterProduct('grains')">Крупи</button>
+      </div>
+
+    <!-- м'ясо -->
+
+<div class="recipe-grid">
+<div class="recipe-card" data-category="meat">
+  <img src="images/yalovychyna.jpg" alt="Яловичина">
+   <h3>Яловичина</h3>
+    <p>200 ккал / 100г. Багата на білок.</p>
+    <button onclick="toggleDetails(this)">Детальніше</button>
+    <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 200ккал /100 г </p>
+    <p><strong>Білки:</strong> 26 г | <strong>Жири:</strong> 20 г | <strong>Вуглеводи:</strong> 0 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="meat">
+  <img src="images/svynyna.jpg" alt="Свинина">
+  <h3>Свинина</h3>
+  <p>260 ккал / 100г. Жирне червоне м’ясо</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 260ккал /100 г </p>
+    <p><strong>Білки:</strong> 24 г | <strong>Жири:</strong> 30 г | <strong>Вуглеводи:</strong> 0 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="meat">
+  <img src="images/kurka.jpg" alt="Курка">
+  <h3>Курка</h3>
+  <p>190 ккал / 100г. Дієтичне біле м’ясо</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 190ккал /100 г </p>
+    <p><strong>Білки:</strong> 27 г | <strong>Жири:</strong> 5 г | <strong>Вуглеводи:</strong> 0 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="meat">
+  <img src="images/indyka.jpg" alt="Індичка">
+  <h3>Індичка</h3>
+  <p>160 ккал / 100г. Нежирне м’ясо, добре засвоюється.</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 160 ккал / 100 г</p>
+    <p><strong>Білки:</strong> 29 г | <strong>Жири:</strong> 4 г | <strong>Вуглеводи:</strong> 0 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="meat">
+  <img src="images/telyatyna.jpg" alt="Телятина">
+  <h3>Телятина</h3>
+  <p>150 ккал / 100г. М’яке м’ясо, багате на залізо.</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 150 ккал / 100 г</p>
+    <p><strong>Білки:</strong> 20 г | <strong>Жири:</strong> 8 г | <strong>Вуглеводи:</strong> 0 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="meat">
+  <img src="images/kravets.jpg" alt="Кролятина">
+  <h3>Кролятина</h3>
+  <p>170 ккал / 100г. Легке м’ясо з низьким вмістом холестерину.</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 170 ккал / 100 г</p>
+    <p><strong>Білки:</strong> 21 г | <strong>Жири:</strong> 9 г | <strong>Вуглеводи:</strong> 0 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="meat">
+  <img src="images/baranina.jpg" alt="Баранина">
+  <h3>Баранина</h3>
+  <p>240 ккал / 100г. Ароматне червоне м’ясо.</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 240 ккал / 100 г</p>
+    <p><strong>Білки:</strong> 22 г | <strong>Жири:</strong> 17 г | <strong>Вуглеводи:</strong> 0 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="meat">
+  <img src="images/pechinka.jpg" alt="Печінка">
+  <h3>Печінка яловича</h3>
+  <p>135 ккал / 100г. Багата на залізо та вітаміни.</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 135 ккал / 100 г</p>
+    <p><strong>Білки:</strong> 20 г | <strong>Жири:</strong> 5 г | <strong>Вуглеводи:</strong> 3 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="meat">
+  <img src="images/salo.jpg" alt="Сало">
+  <h3>Сало</h3>
+  <p>770 ккал / 100г. Чистий жир, джерело енергії.</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 770 ккал / 100 г</p>
+    <p><strong>Білки:</strong> 1 г | <strong>Жири:</strong> 85 г | <strong>Вуглеводи:</strong> 0 г</p>
+  </div>
+</div>
+
+    <!-- овочі і фрукти -->
+
+<div class="recipe-card" data-category="veggies">
+  <img src="images/morkva.jpg" alt="Морква">
+  <h3>Морква</h3>
+  <p>35 ккал / 100г. Джерело бета-каротину</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 35ккал /100 г </p>
+    <p><strong>Білки:</strong> 1 г | <strong>Жири:</strong> 0.2 г | <strong>Вуглеводи:</strong> 9 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="veggies">
+  <img src="images/yabluko.jpg" alt="Яблуко">
+  <h3>Яблуко</h3>
+  <p>52 ккал / 100г. Соковитий фрукт з вітаміном C</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 52ккал /100 г </p>
+    <p><strong>Білки:</strong> 0.3 г | <strong>Жири:</strong> 0.2 г | <strong>Вуглеводи:</strong> 14 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="veggies">
+  <img src="images/banan.jpg" alt="Банан">
+  <h3>Банан</h3>
+  <p>89 ккал / 100г. Калорійне джерело енергії</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 89 ккал / 100г</p>
+    <p><strong>Білки:</strong> 1.1 г | <strong>Жири:</strong> 0.3 г | <strong>Вуглеводи:</strong> 23 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="veggies">
+  <img src="images/broccoli.jpg" alt="Броколі">
+  <h3>Броколі</h3>
+  <p>34 ккал / 100г. Багата клітковиною та вітамінами</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 34 ккал / 100г</p>
+    <p><strong>Білки:</strong> 2.8 г | <strong>Жири:</strong> 0.4 г | <strong>Вуглеводи:</strong> 7 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="veggies">
+  <img src="images/pomidor.jpg" alt="Помідор">
+  <h3>Помідор</h3>
+  <p>18 ккал / 100г. Соковитий овоч з лікопіном</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 18 ккал / 100г</p>
+    <p><strong>Білки:</strong> 0.9 г | <strong>Жири:</strong> 0.2 г | <strong>Вуглеводи:</strong> 4 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="veggies">
+  <img src="images/kapusta.jpg" alt="Капуста">
+  <h3>Капуста</h3>
+  <p>25 ккал / 100г. Низькокалорійний овоч</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 25 ккал / 100г</p>
+    <p><strong>Білки:</strong> 1.3 г | <strong>Жири:</strong> 0.1 г | <strong>Вуглеводи:</strong> 6 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="veggies">
+  <img src="images/ogirok.jpg" alt="Огірок">
+  <h3>Огірок</h3>
+  <p>15 ккал / 100г. Освіжаючий овоч</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 15 ккал / 100г</p>
+    <p><strong>Білки:</strong> 0.7 г | <strong>Жири:</strong> 0.1 г | <strong>Вуглеводи:</strong> 3.6 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="veggies">
+  <img src="images/avokado.jpg" alt="Авокадо">
+  <h3>Авокадо</h3>
+  <p>160 ккал / 100г. Джерело корисних жирів</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 160 ккал / 100г</p>
+    <p><strong>Білки:</strong> 2 г | <strong>Жири:</strong> 15 г | <strong>Вуглеводи:</strong> 9 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="veggies">
+  <img src="images/kyv.jpg" alt="Ківі">
+  <h3>Ківі</h3>
+  <p>41 ккал / 100г. Фрукт з великою кількістю вітаміну C</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 41 ккал / 100г</p>
+    <p><strong>Білки:</strong> 1 г | <strong>Жири:</strong> 0.6 г | <strong>Вуглеводи:</strong> 10 г</p>
+  </div>
+</div>
+
+    <!-- риба і морепродукти -->
+
+<div class="recipe-card" data-category="fish">
+  <img src="images/skumbria.jpg" alt="Скумбрія">
+  <h3>Скумбрія</h3>
+  <p>210 ккал / 100г. Жирна риба з Омега-3</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 210ккал /100 г </p>
+    <p><strong>Білки:</strong> 19 г | <strong>Жири:</strong> 14 г | <strong>Вуглеводи:</strong> 0 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="fish">
+  <img src="images/khek.jpg" alt="Хек">
+  <h3>Хек</h3>
+  <p>85 ккал / 100г. Дієтична біла риба</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 85ккал /100 г </p>
+    <p><strong>Білки:</strong> 17 г | <strong>Жири:</strong> 2 г | <strong>Вуглеводи:</strong> 0 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="fish">
+  <img src="images/losos.jpg" alt="Лосось">
+  <h3>Лосось</h3>
+  <p>208 ккал / 100г. Багатий на Омега-3 жирні кислоти</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 208 ккал / 100г</p>
+    <p><strong>Білки:</strong> 20 г | <strong>Жири:</strong> 13 г | <strong>Вуглеводи:</strong> 0 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="fish">
+  <img src="images/karas.jpg" alt="Карась">
+  <h3>Карась</h3>
+  <p>87 ккал / 100г. Прісноводна риба з ніжним м’ясом</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 87 ккал / 100г</p>
+    <p><strong>Білки:</strong> 18 г | <strong>Жири:</strong> 2 г | <strong>Вуглеводи:</strong> 0 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="fish">
+  <img src="images/tunec.jpg" alt="Тунець">
+  <h3>Тунець</h3>
+  <p>132 ккал / 100г. Пісна океанічна риба</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 132 ккал / 100г</p>
+    <p><strong>Білки:</strong> 23 г | <strong>Жири:</strong> 4 г | <strong>Вуглеводи:</strong> 0 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="fish">
+  <img src="images/korolivska_krevetka.jpg" alt="Креветки">
+  <h3>Креветки</h3>
+  <p>99 ккал / 100г. Морепродукти з високим вмістом білка</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 99 ккал / 100г</p>
+    <p><strong>Білки:</strong> 20 г | <strong>Жири:</strong> 1 г | <strong>Вуглеводи:</strong> 0 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="fish">
+  <img src="images/kalmari.jpg" alt="Кальмари">
+  <h3>Кальмари</h3>
+  <p>92 ккал / 100г. Морський делікатес</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 92 ккал / 100г</p>
+    <p><strong>Білки:</strong> 15.5 г | <strong>Жири:</strong> 2.5 г | <strong>Вуглеводи:</strong> 0 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="fish">
+  <img src="images/mydii.jpg" alt="Мідії">
+  <h3>Мідії</h3>
+  <p>86 ккал / 100г. Джерело заліза та білка</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 86 ккал / 100г</p>
+    <p><strong>Білки:</strong> 12 г | <strong>Жири:</strong> 2 г | <strong>Вуглеводи:</strong> 3 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="fish">
+  <img src="images/osetr.jpg" alt="Осетр">
+  <h3>Осетр</h3>
+  <p>164 ккал / 100г. Жирна риба з вишуканим смаком</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 164 ккал / 100г</p>
+    <p><strong>Білки:</strong> 16 г | <strong>Жири:</strong> 10 г | <strong>Вуглеводи:</strong> 0 г</p>
+  </div>
+</div>
+
+    <!-- крупи -->
+
+<div class="recipe-card" data-category="grains">
+  <img src="images/grechka.jpg" alt="Гречка">
+  <h3>Гречка</h3>
+  <p>340 ккал / 100г. Багата на білки та залізо</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 340ккал /100 г </p>
+    <p><strong>Білки:</strong> 13 г | <strong>Жири:</strong> 3.4 г | <strong>Вуглеводи:</strong> 72 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="grains">
+  <img src="images/oves.jpg" alt="Овес">
+  <h3>Овес</h3>
+  <p>370 ккал / 100г. Джерело клітковини</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 370ккал /100 г </p>
+    <p><strong>Білки:</strong> 17 г | <strong>Жири:</strong> 7 г | <strong>Вуглеводи:</strong> 66 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="grains">
+  <img src="images/ris.jpg" alt="Рис">
+  <h3>Рис</h3>
+  <p>330 ккал / 100г. Джерело швидких вуглеводів</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 330 ккал / 100г</p>
+    <p><strong>Білки:</strong> 6.6 г | <strong>Жири:</strong> 0.9 г | <strong>Вуглеводи:</strong> 72 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="grains">
+  <img src="images/kinoa.jpg" alt="Кіноа">
+  <h3>Кіноа</h3>
+  <p>368 ккал / 100г. Суперфуд із повноцінним білком</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 368 ккал / 100г</p>
+    <p><strong>Білки:</strong> 14 г | <strong>Жири:</strong> 6 г | <strong>Вуглеводи:</strong> 64 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="grains">
+  <img src="images/perlovka.jpg" alt="Перловка">
+  <h3>Перловка</h3>
+  <p>320 ккал / 100г. Ячмінна крупа з мінералами</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 320 ккал / 100г</p>
+    <p><strong>Білки:</strong> 9.3 г | <strong>Жири:</strong> 1.1 г | <strong>Вуглеводи:</strong> 66 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="grains">
+  <img src="images/proso.jpg" alt="Пшоно">
+  <h3>Пшоно</h3>
+  <p>342 ккал / 100г. Легкозасвоювана крупа</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 342 ккал / 100г</p>
+    <p><strong>Білки:</strong> 11 г | <strong>Жири:</strong> 3.9 г | <strong>Вуглеводи:</strong> 69 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="grains">
+  <img src="images/kukurudza.jpg" alt="Кукурудзяна крупа">
+  <h3>Кукурудзяна крупа</h3>
+  <p>330 ккал / 100г. Джерело вітамінів групи B</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 330 ккал / 100г</p>
+    <p><strong>Білки:</strong> 8.3 г | <strong>Жири:</strong> 1.2 г | <strong>Вуглеводи:</strong> 71 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="grains">
+  <img src="images/manha.jpg" alt="Манна крупа">
+  <h3>Манна крупа</h3>
+  <p>333 ккал / 100г. Швидке приготування, м’який смак</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 333 ккал / 100г</p>
+    <p><strong>Білки:</strong> 10.3 г | <strong>Жири:</strong> 1 г | <strong>Вуглеводи:</strong> 70 г</p>
+  </div>
+</div>
+
+<div class="recipe-card" data-category="grains">
+  <img src="images/amaranth.jpg" alt="Амарант">
+  <h3>Амарант</h3>
+  <p>371 ккал / 100г. Безглютенова крупа з лізином</p>
+  <button onclick="toggleDetails(this)">Детальніше</button>
+  <div class="card-details" style="display: none;">
+    <p><strong>Ккал:</strong> 371 ккал / 100г</p>
+    <p><strong>Білки:</strong> 14 г | <strong>Жири:</strong> 7 г | <strong>Вуглеводи:</strong> 65 г</p>
+  </div>
+</div>
+
+
+      </div>
+    </div>
   </div>
 
-  
   <script src="script.js"></script>
-
-
-
 </body>
 </html>
+
