@@ -55,3 +55,40 @@ document.getElementById('updateChartBtn').addEventListener('click', () => {
   myPieChart.data.datasets[0].data = [protein, fat, carb];
   myPieChart.update();
 });
+// Перемикання вкладок Рецепти / Продукти
+function showMainTab(tabName) {
+  document.getElementById('recipes').style.display = (tabName === 'recipes') ? 'block' : 'none';
+  document.getElementById('products').style.display = (tabName === 'products') ? 'block' : 'none';
+  
+  document.getElementById('tab-recipes').classList.toggle('active-tab', tabName === 'recipes');
+  document.getElementById('tab-products').classList.toggle('active-tab', tabName === 'products');
+}
+
+// Фільтрація категорій
+function filterCategory(category) {
+  const cards = document.querySelectorAll('#recipes .recipe-card');
+  cards.forEach(card => {
+    const match = card.dataset.category === category;
+    card.style.display = match ? 'block' : 'none';
+  });
+}
+
+function filterProduct(category) {
+  const cards = document.querySelectorAll('#products .recipe-card');
+  cards.forEach(card => {
+    const match = card.dataset.category === category;
+    card.style.display = match ? 'block' : 'none';
+  });
+}
+function toggleDetails(button) {
+  const card = button.closest('.recipe-card');
+  const details = card.querySelector('.card-details');
+
+  if (details.style.display === "none" || details.style.display === "") {
+    details.style.display = "block";
+    button.textContent = "Згорнути";
+  } else {
+    details.style.display = "none";
+    button.textContent = "Детальніше";
+  }
+}
