@@ -1,3 +1,9 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 /* Заголовок просто зверху */
 .header-title {
   text-align: center;
@@ -14,16 +20,12 @@
 
 /* Sticky navbar */
 .sticky-navbar {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background-color: #e0e0e0;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 12px 24px;
-  border-bottom: 1px solid #ccc;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  gap: 2rem;              /* відстань між групою лінків та іконкою */
+  padding: 12px 0;        /* можна відкоригувати за бажанням */
+  background-color: #157c32;
 }
 
 .active-link {
@@ -37,17 +39,18 @@
 }
 
 .navbar {
+  justify-content: center;           /* для абсолютного позиціювання іконки */
   display: flex;
-  justify-content: center;
-  background-color: #157c32;
+  align-items: center;
+  background-color: #157c32;    /* зелений фон навігації */
   padding: 12px 0;
-  border-bottom: 1px solid #c1bfae;
 }
 
+/* 2) Центруємо самі лінки, задаючи автомаргін */
 .nav-links {
   display: flex;
-  gap: 100px;
-  
+  gap: 10rem;                    /* адаптивний відступ між лінками */
+  position: relative;
 }
 
 .nav-link {
@@ -63,7 +66,6 @@
 body {
    font-family: 'Merriweather', serif;
     text-align: center;
-
     margin: 0;
     padding: 20px;
   }
@@ -104,6 +106,7 @@ body {
   align-items: center;
   font-size: 14px;
 }
+
 
 .card-details {
   background-color: #f9f9f9;
@@ -224,3 +227,119 @@ body {
 }
 
 /* input end */
+
+/* input end */
+
+/* ШЕСТЕРНЯ */
+.settings-icon {
+  position: absolute;   
+  left: 100%;
+  top: 50%;
+  transform: translate(0, -50%);
+
+  margin-left: 10rem;       /* відступ від “Stats” */
+  padding: 0.4rem;         /* щоб було гарно на зеленому фоні */
+  background-color: #157c32;
+  border-radius: 0.25rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Стилі для іконки */
+.settings-icon a {
+  color: #c1bfae;               /* колір іконки, як у лінків */
+  font-size: 1.25rem;
+  text-decoration: none;
+}
+
+.settings-icon a:hover {
+  color: #ffffff;
+}
+
+/* ШЕСТЕРНЯ КІНЕЦЬ */
+
+
+/* Settings */
+
+/* === Вкладки «Реєстрація» / «Вхід» === */
+/* === Вкладки «Реєстрація» / «Вхід» чорною фарбою === */
+.auth-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tab {
+  background: none;
+  border: none;
+  font-family: 'Merriweather', serif;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  color: #000000;                  /* текст чорною */
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s ease, border-bottom-color 0.2s ease;
+}
+
+.tab:hover {
+  color: #444444;                  /* трохи світліша чорна при наведенні */
+}
+
+.tab.active {
+  color: #000000;                  /* активна вкладка — чорна */
+  border-bottom-color: #000000;    /* підкреслення чорне */
+}
+
+
+/* === Форма === */
+.auth-form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+.form-group {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+} 
+.form-group input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* === Кнопка === */
+#submitBtn {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  background-color: #157c32;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+#submitBtn:hover {
+  background-color: #136b29;
+}
+
+/* === Повідомлення про помилку === */
+.error {
+  color: #ff4d4f;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+}
+
+
+/* Settings КІНЕЦЬ */
+
+

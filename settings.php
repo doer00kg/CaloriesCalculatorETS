@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!empty($_SESSION['user_id'])) {
+    header('Location: profile.php');
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +25,7 @@
     <div class="header-title">
       <h1 class="site-title">Eager to Sport</h1>
     </div>
-    
+  
     <nav class="navbar sticky-navbar">
       <div class="nav-links">
         <a href="ets1.html" class="nav-link">Profile</a>
@@ -33,21 +41,33 @@
   </header>
   
   <div class="content-box">
-    <div class="input-section">
-      <label>Proteins: <input type="number" id="inputProtein" value="30"></label>
-      <label>Fats: <input type="number" id="inputFat" value="20"></label>
-      <label>Carbs: <input type="number" id="inputCarb" value="50"></label>
-      <button id="updateChartBtn">Update Chart</button>
+<!-- 1) Вкладки режиму -->
+    <div class="auth-tabs">
+      <button type="button" id="registerTab" class="tab">Реєстрація</button>
+      <button type="button" id="loginTab"    class="tab">Вхід</button>
     </div>
-    
-    <canvas id="myPieChart" width="250" height="250"></canvas>
-    
-    <p>Artem, here can be your text.</p>
+
+    <!-- 2) Форма авторизації/реєстрації -->
+    <div class="auth-form">
+      <form id="authForm" action="php/register.php" method="POST">
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        <!-- Пароль -->
+        <div class="form-group">
+          <label for="password">Пароль</label>
+          <input type="password" id="password" name="password" required>
+        </div>
+        <!-- Кнопка, текст змінюється через JS -->
+        <button type="submit" id="submitBtn">Зареєструватися</button>
+      </form>
+    </div>
   </div>
 
-  
-  <script src="script.js"></script>
 
+<script src="script.js"></script>
 
 
 </body>
