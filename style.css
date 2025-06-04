@@ -64,10 +64,10 @@
 
 
 body {
-   font-family: 'Merriweather', serif;
-    text-align: center;
-    margin: 0;
-    padding: 20px;
+  font-family: 'Merriweather', serif;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
   }
   
   canvas {
@@ -218,5 +218,444 @@ body {
 }
 
 
+/* ==== Logout button ==== */
+.logout-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-family: 'Merriweather', serif;
+  font-size: 1rem;
+  color: #157c32;
+  background: transparent;
+  border: 2px solid #157c32;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.logout-btn i {
+  font-size: 1.2rem;
+}
+
+.logout-btn:hover {
+  background-color: #157c32;
+  color: #ffffff;
+}
+
+
+
 /* Settings КІНЕЦЬ */
 
+
+/* Artem Havryliuk "Stats" */
+
+/* Reset */
+/* *, *::before, *::after { box-sizing: border-box; margin:0; padding:0; } */
+
+/* Body & Fonts */
+body {
+  font-family: 'Merriweather', serif;
+  background: #f5f5f5;
+  color: #333;
+  text-align: center;
+  /* padding: 20px; */
+}
+a { text-decoration: none; color: inherit; }
+
+/* Main container: three columns */
+.stats-container {
+  display:grid;
+  grid-template-columns: repeat(3,1fr);
+  gap:20px;
+  max-width:1200px;
+  margin:20px auto;
+}
+
+/* Each panel */
+.step {
+  background:#fff;
+  border-radius:8px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+  padding:20px;
+  position:relative;
+  text-align:left;
+}
+.step-number {
+  position:absolute; top:-12px; left:-12px;
+  background:#157c32; color:#fff;
+  width:28px; height:28px; line-height:28px;
+  border-radius:50%; font-weight:bold;
+}
+.step h2 { margin-bottom:16px; font-size:20px; }
+
+/* Tabs */
+.tabs { display:flex; margin-bottom:16px; }
+.tab-stats {
+  flex:1; padding:8px 16px;
+  border:1px solid #ccc; background:#f0f0f0;
+  cursor:pointer; font-weight:600;
+  transition:background .2s,color .2s;
+  text-align:center;
+}
+.tab-stats:not(:last-child){ border-right:none; }
+.tab-stats.active { background:#157c32; color:#fff; border-color:#157c32; }
+
+/* Form groups & sliders */
+.form-group { margin-bottom:20px; }
+.form-group label { display:block; font-weight:600; margin-bottom:6px; }
+.slider-wrapper { position:relative; }
+.slider-wrapper input[type="range"] { width:100%; }
+.slider-value {
+  position:absolute; top:-28px; right:0;
+  background:#fff; padding:2px 6px;
+  border:1px solid #ccc; border-radius:4px;
+  font-size:14px;
+}
+
+/* Activity description */
+.activity-desc {
+  font-size:13px; color:#555; margin-top:4px; text-align:left;
+}
+
+/* Switch */
+.switch { display:inline-block; margin-left:10px; vertical-align:middle; }
+.switch input { display:none; }
+.slider-round {
+  position:relative; width:40px; height:20px;
+  background:#ccc; border-radius:20px;
+  cursor:pointer;
+}
+.slider-round::after {
+  content:""; position:absolute;
+  width:18px; height:18px; background:#fff;
+  border-radius:50%; top:1px; left:1px;
+  transition:transform .2s;
+}
+.switch input:checked + .slider-round { background:#157c32; }
+.switch input:checked + .slider-round::after {
+  transform:translateX(20px);
+}
+.note { font-size:13px; color:#777; margin-top:4px; }
+
+/* Result boxes */
+.result-box {
+  background:#f9f9f9; border:1px solid #ddd;
+  border-radius:8px; padding:16px; margin-bottom:20px;
+}
+.result-header {
+  display:flex; justify-content:space-between;
+  align-items:center; margin-bottom:8px;
+}
+.result-value { font-size:32px; font-weight:bold; color:#157c32; }
+.result-subvalue { color:#777; margin-bottom:8px; }
+.info-btn {
+  background:none; border:none; color:#157c32;
+  cursor:pointer; font-size:14px;
+}
+.info-text {
+  display:none; font-size:13px; color:#555; margin-top:8px;
+}
+.info-text.visible { display:block; }
+
+/* BMI scale */
+.bmi-scale {
+  display:flex; justify-content:space-between;
+  margin:10px 0;
+}
+.bmi-dot {
+  width:12px; height:12px;
+  background:#ddd; border-radius:50%;
+}
+.bmi-dot.active { background:#f7a600; }
+.bmi-status { font-weight:600; text-align:center; }
+
+/* Calories & Macros */
+.calories-box { margin-top:16px; }
+.calories-box h3 { font-size:18px; margin-bottom:8px; }
+.calories-value {
+  font-size:36px; color:#157c32; font-weight:bold;
+}
+.calories-subvalue { color:#777; margin-bottom:16px; }
+.macros-list {
+  list-style:none; padding-left:0; margin-top:16px;
+}
+.macros-list li {
+  display:flex; align-items:center; gap:6px; margin-bottom:6px;
+  font-size:14px;
+}
+.dot {
+  width:10px; height:10px; border-radius:50%; display:inline-block;
+}
+.protein { background:#D01818; }
+.carbs   { background:#2E5AAA; }
+.fats    { background:#F7A600; }
+.fiber   { background:#5FAE1E; }
+
+/* Chart */
+#macros-chart {
+  display:block; margin:0 auto; max-width:200px;
+}
+
+.step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* решта твоїх властивостей */
+}
+
+/* Приховуємо порожній контейнер BMR (хай і не лишився в HTML) */
+.step-2 .result-box:first-child {
+  display: none;
+}
+
+/* Приховуємо будь-які залишки ккал/кДж */
+.calories-box .calories-value,
+.calories-box .calories-subvalue {
+  display: none;
+}
+
+/* Центруємо число у кружечку кроку */
+.step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ------------------------------------------- */
+.food-tabs {
+  display: flex;
+  justify-content: center; /* центрує по горизонталі */
+  gap: 10px;
+  margin: 20px 0;
+}
+
+.category-buttons {
+  display: flex;
+  justify-content: center;  /* центрування */
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.card-details {
+  background-color: #f9f9f9;
+  padding: 10px 15px;
+  border-top: 1px solid #ddd;
+  font-size: 14px;
+  color: #333;
+  text-align: left;
+}
+.food-tabs {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  justify-content: center;
+}
+
+.food-tabs button {
+  padding: 10px 20px;
+  cursor: pointer;
+  background-color: #e0e0e0;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.food-tabs .active-tab {
+  background-color: #4caf50;
+  color: white;
+}
+
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+  justify-content: center;
+}
+
+.category-buttons button {
+  padding: 10px 15px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.category-buttons button:hover {
+  background-color: #f0f0f0;
+}
+
+.recipe-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 20px 0;
+}
+
+.recipe-card {
+  width: 300px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  text-align: center;
+  transition: 0.3s;
+  position: relative;
+}
+
+.recipe-card:hover {
+  transform: scale(1.03);
+}
+
+.recipe-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.recipe-card h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
+}
+
+.recipe-card p {
+  padding: 0 12px 10px;
+  font-size: 14px;
+  color: #555;
+}
+
+.recipe-card button {
+  margin: 10px;
+  padding: 8px 14px;
+  background: #c62828;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.recipe-card button:hover {
+  background-color: #b71c1c;
+}
+
+/* Секція "детальніше", яка з'являється */
+.recipe-details {
+  display: none;
+  background-color: #f9f9f9;
+  padding: 10px 15px;
+  font-size: 13px;
+  color: #444;
+  text-align: left;
+  border-top: 1px solid #ddd;
+}
+
+
+/* ---------- ДОДАНО: стиль для контейнера діаграми ---------- */
+.chart-container {
+  max-width: 300px;
+  margin: 30px auto;  /* центруємо діаграму та відступ зверху */
+  padding: 10px;
+  background-color: #f9f9f9; /* світлий фон під діаграму */
+  border: 1px solid #e0e0e0; /* легка рамка */
+  border-radius: 8px;
+}
+
+#pieChart {
+  /* Нехай canvas розтягується в ширину контейнера */
+  width: 100% !important;
+  height: auto !important;
+}
+
+
+/* ---------------------------------------------
+   1) .inputs-row: розміщуємо інпути в один ряд
+--------------------------------------------- */
+.inputs-row {
+  display: flex;
+  flex-wrap: wrap;         /* якщо екран дуже вузький */
+  justify-content: center; /* по центру форми */
+  gap: 20px;               /* відстань між полями */
+  margin-bottom: 16px;     /* відступ під інпутами перед кнопкою */
+}
+
+.inputs-row label {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Merriweather', serif;
+  font-size: 16px;
+  color: #333333;
+}
+
+.inputs-row label input {
+  width: 80px;
+  padding: 6px 8px;
+  margin-top: 4px;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* ---------------------------------------------
+   2) .button-row: вирівнюємо кнопку під інпутами
+--------------------------------------------- */
+.button-row {
+  text-align: center; /* кнопка центрується по ширині */
+}
+
+#updateChartBtn {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: #ffffff;
+  font-family: 'Merriweather', serif;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+#updateChartBtn:hover {
+  background-color: #2c862f;
+}
+
+/* ---------------------------------------------
+   3) Опціонально: підсвітка інпутів у фокусі
+--------------------------------------------- */
+.inputs-row label input:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(54, 162, 235, 0.4);
+}
+
+
+/* В style.css (додайте наприкінці) */
+.submitButton-div {
+  display: flex;
+  justify-content: center;      /* вирівнювання по центру */
+  margin-top: 20px;             /* відступ зверху (за бажанням) */
+}
+
+.submitButton {
+  background-color: #4caf50;     /* основний зелений колір */
+  color: #fff;                   /* білий текст */
+  font-size: 16px;               /* розмір шрифту */
+  font-weight: 600;
+  padding: 12px 24px;            /* внутрішні відступи (вертикальні та горизонтальні) */
+  border: none;                  /* без рамки за замовчуванням */
+  border-radius: 5px;            /* округлі кути */
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* легка тінь під кнопкою */
+}
+
+.submitButton:hover {
+  background-color: #45a049;     /* трохи темніший відтінок при наведенні */
+}

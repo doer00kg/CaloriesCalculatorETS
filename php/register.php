@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 include "dp.php";
 
@@ -41,6 +42,9 @@ if ($stmt->num_rows > 0) {
 
         if ($insert->execute()) {
             echo "User registered successfully!";
+            $_SESSION['user_id']   = $user_id;
+            $_SESSION['login']     = $email;
+            $_SESSION['logged_in'] = true;
         } else {
             echo "Insert error: " . $insert->error;
         }

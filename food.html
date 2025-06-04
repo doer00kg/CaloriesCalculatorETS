@@ -1,46 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eager to Sport</title>
     <link rel="stylesheet" href="style.css">
     <!-- fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
 </head>
 <body>
-        
   <header class="main-header">
     <div class="header-title">
       <h1 class="site-title">Eager to Sport</h1>
     </div>
-  
     <nav class="navbar sticky-navbar">
       <div class="nav-links">
-        <a href="ets1.html" class="nav-link">Profile</a>
-        <a href="food.html"   class="nav-link">Food</a>
-        <a href="stats.html"  class="nav-link">Stats</a>
-
+        <a class="nav-link" href="ets1.php">Profile</a>
+        <a class="nav-link" href="food.html">Food</a>
+        <a class="nav-link" href="stats.html">Stats</a>
         <div class="settings-icon">
-          <a href="settings.php">
-          <i class="fas fa-cog"></i>
-        </a>
+          <a href="settings.php"><i class="fas fa-cog"></i></a>
+        </div>
       </div>
-    </div>
+    </nav>
   </header>
-  
-  <div class="content-box">
 
-    <p>Artem, here can be your text.</p>
+  <div class="content-box">
+    <!-- Вкладки Рецепти / Продукти -->
+    <div class="food-tabs">
+      <button class="active-tab" id="tab-recipes" onclick="showMainTab('recipes')">Рецепти</button>
+      <button id="tab-products" onclick="showMainTab('products')">Продукти</button>
+    </div>
+
+    <!-- Розділ “Рецепти” -->
+    <div class="food-section" id="recipes">
+      <div class="category-buttons">
+        <button onclick="filterCategory('soups')">Супи</button>
+        <button onclick="filterCategory('rice')">Рис і локшина</button>
+        <button onclick="filterCategory('meats')">М'ясні страви</button>
+        <button onclick="filterCategory('fish')">Риба та морепродукти</button>
+        <button onclick="filterCategory('desserts')">Десерти та напої</button>
+      </div>
+      <!-- Сюди JS підставить всі картки для вибраної категорії -->
+      <div id="recipes-grid" class="recipe-grid"></div>
+    </div>
+
+    <!-- Розділ “Продукти” (спочатку приховано) -->
+    <div id="products" class="food-section" style="display: none;">
+      <div class="category-buttons">
+        <button onclick="filterProduct('meat')">Мʼясо</button>
+        <button onclick="filterProduct('veggies')">Овочі і фрукти</button>
+        <button onclick="filterProduct('fish')">Риба і морепродукти</button>
+        <button onclick="filterProduct('grains')">Крупи</button>
+      </div>
+      <!-- Сюди JS підставить всі картки-продукти для вибраної категорії -->
+      <div id="products-grid" class="recipe-grid"></div>
+    </div>
   </div>
 
-  
+  <!-- Підключаємо наш скрипт -->
   <script src="script.js"></script>
-
-
-
 </body>
 </html>
