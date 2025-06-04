@@ -41,6 +41,7 @@ if ($stmt->num_rows > 0) {
         $insert->bind_param("ss", $password, $email);
 
         if ($insert->execute()) {
+            $user_id = $insert->insert_id;
             echo "User registered successfully!";
             $_SESSION['user_id']   = $user_id;
             $_SESSION['login']     = $email;
