@@ -80,79 +80,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Artem Havryliuk "Stats"
-
-// script.js
-
-// ===== Model: всі розрахунки =====
-class StatsModel {
-  constructor({ weight, height, age, gender, activity, goal }) {
-    this.weight   = weight;
-    this.height   = height;
-    this.age      = age;
-    this.gender   = gender;
-    this.activity = activity;
-    this.goal     = goal;
-  }
-
-  // Індекс маси тіла
-  calcBMI() {
-    const m = this.height / 100;
-    return this.weight / (m * m);
-  }
-
-  // Статус BMI для шкали
-  getBmiStatus() {
-    const bmi = this.calcBMI();
-    if (bmi < 18.5)  return { idx: 0, label: 'Недостатня вага' };
-    if (bmi < 25)    return { idx: 1, label: 'Норма' };
-    if (bmi < 30)    return { idx: 2, label: 'Зайва вага' };
-    if (bmi < 35)    return { idx: 3, label: 'Ожиріння I' };
-    if (bmi < 40)    return { idx: 4, label: 'Ожиріння II' };
-                     return { idx: 5, label: 'Ожиріння III' };
-  }
-
-  // Базальний обмін (Mifflin–St Jeor), потрібне для макросів
-  calcBMR() {
-    const base = 10 * this.weight + 6.25 * this.height - 5 * this.age;
-    return this.gender === 'female' ? base - 161 : base + 5;
-  }
-
-  // Коефіцієнти активності
-  _activityFactors() {
-    return {
-      sedentary: 1.2,
-      light:     1.375,
-      moderate:  1.55,
-      heavy:     1.725,
-      extreme:   1.9
-    }[this.activity];
-  }
-
-  // TDEE
-  calcTDEE() {
-    return this.calcBMR() * this._activityFactors();
-  }
-
-  // Цільова калорійність
-  calcTargetCalories() {
-    const tdee = this.calcTDEE();
-    if (this.goal === 'lose') return tdee - 500;
-    if (this.goal === 'gain') return tdee + 500;
-    return tdee; // maintain
-  }
-
-  // Макронутрієнти
-  calcMacros() {
-    const cal = this.calcTargetCalories();
-    return {
-      prots:  Math.round((0.30 * cal) / 4),
-      carbs:  Math.round((0.50 * cal) / 4),
-      fats:   Math.round((0.20 * cal) / 9),
-      fiber:  25
-    };
-  }
-}
+// Розділ нижче було перероблено, щоби відокремити обчислювальну модель
+// (винесено у src/stats-model.js) та зробити її придатною для unit/
+// integration/e2e тестування без DOM. Сам view і контролер залишилися
+// тут, бо вони працюють із розміткою сторінок.
 
 // ===== View: робота з DOM =====
 class StatsView {
@@ -295,148 +226,126 @@ class StatsView {
   }
 }
 
+function initStatsController() {
+  const view = new StatsView();
+
+const update = () => {
+    const inputs = view.getInputs();
+    const model  = new StatsModel(inputs);
+    const bmi    = model.calcBMI();
+    const bmiStat = model.getBmiStatus();
+    const macros = model.calcMacros();
+    view.render({ bmi, bmiStatus: bmiStat, macros });
+  };
+
+view.syncLabels();
+view.updateActivityDesc();
+view.bindAll(update);
+update();
+return { view, update };
+}
+
+function applyLoadedData(data) {
+if (!data) {
+  return;
+}
+
+  const sex = data.sex === 'M' ? 'male' : 'female';
+  document.querySelectorAll('[data-gender]').forEach(btn => {
+    if (btn.dataset.gender === sex) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+  const inputSex = document.getElementById('inputSex');
+  if (inputSex) {
+    inputSex.value = sex;
+  }
+
+  const goalMap = { 1: 'lose', 2: 'gain', 3: 'maintain' };
+  const goal = goalMap[data.goal] || 'maintain';
+  document.querySelectorAll('[data-goal]').forEach(btn => {
+    if (btn.dataset.goal === goal) {
+      btn.classList.add('active');
+    } else {
+      btn.classList.remove('active');
+    }
+  });
+  const inputGoal = document.getElementById('inputGoal');
+  if (inputGoal) {
+    inputGoal.value = goal;
+  }
+
+  const yearSlider = document.getElementById('year-slider');
+  const yearValue = document.getElementById('year-value');
+  if (yearSlider && yearValue) {
+    yearSlider.value = data.age;
+    yearValue.textContent = data.age;
+  }
+
+  const heightSlider = document.getElementById('height-slider');
+  const heightValue = document.getElementById('height-value');
+  if (heightSlider && heightValue) {
+    heightSlider.value = data.height;
+    heightValue.textContent = data.height;
+  }
+
+  const weightSlider = document.getElementById('weight-slider');
+  const weightValue = document.getElementById('weight-value');
+  if (weightSlider && weightValue) {
+    weightSlider.value = data.weight;
+    weightValue.textContent = data.weight;
+  }
+
+  const fatSlider = document.getElementById('fat-slider');
+  const fatValue = document.getElementById('fat-value');
+  if (fatSlider && fatValue) {
+    fatSlider.value = data.fats;
+    fatValue.textContent = data.fats + ' %';
+  }
+
+  const goalSlider = document.getElementById('goal-slider');
+  const goalValue = document.getElementById('goal-value');
+  if (goalSlider && goalValue) {
+    goalSlider.value = data.goal_weight;
+    goalValue.textContent = data.goal_weight + ' кг';
+  }
+
+  const activitySelect = document.getElementById('activity-select');
+  const activityDesc  = document.getElementById('activity-desc');
+  if (activitySelect) {
+    activitySelect.value = data.activity_level.toString();
+  }
+  if (activityDesc && activitySelect) {
+    const map = {
+      sedentary: 'Сидячий способ життя.',
+      light:     '1–3 тренування/тиждень.',
+      moderate:  '3–5 тренувань/тиждень.',
+      heavy:     '6–7 тренувань/тиждень.',
+      extreme:   'Щоденні інтенсивні тренування.'
+    };
+    activityDesc.textContent = map[activitySelect.value] || '';
+  }
+}
+
 // ===== Controller =====
 document.addEventListener('DOMContentLoaded', () => {
-  // Сначала подгружаем данные из PHP
   fetch('php/load.php')
     .then(res => res.json())
     .then(data => {
-      if (!data) {
-        // Если данных нет, просто инициализируем вид+модель по умолчанию
-        initStatsController();
-        return;
-      }
-
-      // ——————————————————————————————————————————————————————————
-      // 1. Устанавливаем состояние DOM по данным из fetch
-      // ——————————————————————————————————————————————————————————
-
-      // 1.1. Пол (кнопки)
-      const sex = data.sex === 'M' ? 'male' : 'female';
-      document.querySelectorAll('[data-gender]').forEach(btn => {
-        if (btn.dataset.gender === sex) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
-      // (если у вас есть скрытый inputSex – можно обновить его значение, но StatsView.getInputs
-      // сам возьмет активную кнопку)
-      const inputSex = document.getElementById('inputSex');
-      if (inputSex) {
-        inputSex.value = sex;
-      }
-
-      // 1.2. Цель (кнопки)
-      const goalMap = { 1: 'lose', 2: 'gain', 3: 'maintain' };
-      const goal = goalMap[data.goal] || 'maintain';
-      document.querySelectorAll('[data-goal]').forEach(btn => {
-        if (btn.dataset.goal === goal) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
-      const inputGoal = document.getElementById('inputGoal');
-      if (inputGoal) {
-        inputGoal.value = goal;
-      }
-
-      // 1.3. Слайдер «Год рождения» (year-slider → year and year-value)
-      const yearSlider = document.getElementById('year-slider');
-      const yearValue = document.getElementById('year-value');
-      if (yearSlider && yearValue) {
-        // В поле "data.age" приходит год рождения
-        yearSlider.value = data.age;
-        yearValue.textContent = data.age;
-      }
-
-      // 1.4. Слайдер «Рост»
-      const heightSlider = document.getElementById('height-slider');
-      const heightValue = document.getElementById('height-value');
-      if (heightSlider && heightValue) {
-        heightSlider.value = data.height;
-        heightValue.textContent = data.height;
-      }
-
-      // 1.5. Слайдер «Вес»
-      const weightSlider = document.getElementById('weight-slider');
-      const weightValue = document.getElementById('weight-value');
-      if (weightSlider && weightValue) {
-        weightSlider.value = data.weight;
-        weightValue.textContent = data.weight;
-      }
-
-      // 1.6. Слайдер «Жир (%)»
-      const fatSlider = document.getElementById('fat-slider');
-      const fatValue = document.getElementById('fat-value');
-      if (fatSlider && fatValue) {
-        fatSlider.value = data.fats;
-        fatValue.textContent = data.fats + ' %';
-      }
-
-      // 1.7. Слайдер «Целевой вес»
-      const goalSlider = document.getElementById('goal-slider');
-      const goalValue = document.getElementById('goal-value');
-      if (goalSlider && goalValue) {
-        goalSlider.value = data.goal_weight;
-        goalValue.textContent = data.goal_weight + ' кг';
-      }
-
-      // 1.8. Выбор активности
-      const activitySelect = document.getElementById('activity-select');
-      const activityDesc  = document.getElementById('activity-desc');
-      if (activitySelect) {
-        activitySelect.value = data.activity_level.toString();
-      }
-      // Обновим текст описания активности (если есть маппинг в StatsView, можно вызвать updateActivityDesc)
-      if (activityDesc && activitySelect) {
-        const map = {
-          sedentary: 'Сидячий способ життя.',
-          light:     '1–3 тренування/тиждень.',
-          moderate:  '3–5 тренувань/тиждень.',
-          heavy:     '6–7 тренувань/тиждень.',
-          extreme:   'Щоденні інтенсивні тренування.'
-        };
-        activityDesc.textContent = map[activitySelect.value] || '';
-      }
-
-      // ——————————————————————————————————————————————————————————
-      // 2. Запускаем существующий контроллер (StatsView + StatsModel + биндинги)
-      // ——————————————————————————————————————————————————————————
+      applyLoadedData(data);
       initStatsController();
     })
     .catch(err => {
       console.error('Ошибка загрузки данных из PHP:', err);
-      // Если fetch упал — просто запустим контроллер без предзаполнения
       initStatsController();
     });
 
-  // Общая функция-инициализатор: вызывает StatsView, бинды и начальный рендер
-  function initStatsController() {
-    const view = new StatsView();
-
-    // Функция, которая делает расчет и передает в render
-    const update = () => {
-      const inputs = view.getInputs();
-      const model  = new StatsModel(inputs);
-      const bmi    = model.calcBMI();
-      const bmiStat = model.getBmiStatus();
-      const macros = model.calcMacros();
-      view.render({ bmi, bmiStatus: bmiStat, macros });
-    };
-
-    // Синхронизируем подписи слайдеров сразу после установки их значений
-    view.syncLabels();
-    view.updateActivityDesc();
-
-    // Навешиваем обработчики на элементы (табы, слайдеры, select и т.д.)
-    view.bindAll(update);
-
-    // Делаем первый расчет
-    update();
-  }
 });
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { StatsView, initStatsController, applyLoadedData };
+}
 
 // ---------------------------------------------
 // =======================================
