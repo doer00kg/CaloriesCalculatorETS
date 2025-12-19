@@ -134,6 +134,7 @@ if ($logged_in) {
   });
 });
 </script>
+  <script src="src/stats-model.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
