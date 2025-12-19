@@ -1,0 +1,21 @@
+{
+  "name": "calories-calculator-ets",
+  "version": "1.0.0",
+  "description": "Testing setup for Calories Calculator ETS",
+  "scripts": {
+    "test": "vitest",
+    "test:unit": "vitest run tests/unit",
+    "test:integration": "vitest run tests/integration",
+    "test:e2e": "vitest run tests/e2e",
+    "test:coverage": "vitest run --coverage",
+    "mutation": "stryker run"
+  },
+  "devDependencies": {
+    "@stryker-mutator/core": "^8.0.0",
+    "@stryker-mutator/javascript-mutator": "^8.0.0",
+    "@stryker-mutator/vitest-runner": "^8.0.0",
+    "@vitest/coverage-v8": "^2.0.0",
+    "jsdom": "^24.0.0",
+    "vitest": "^2.0.0"
+  }
+}
