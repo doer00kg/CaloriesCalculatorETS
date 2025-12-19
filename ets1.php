@@ -110,6 +110,7 @@ $conn->close();
 
 
 
+<script src="src/stats-model.js"></script>
 <script src="script.js"></script>
 
 </body>
